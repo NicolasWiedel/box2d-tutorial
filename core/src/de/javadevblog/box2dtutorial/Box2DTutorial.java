@@ -16,6 +16,12 @@ public class Box2DTutorial extends Game {
 	private MainScreen mainScreen;
 	private EndScreen endScreen;
 
+	private AppPreferences appPreferences;
+
+	public Box2DTutorial(){
+		appPreferences = new AppPreferences();
+	}
+
 	public void changeScreen(int screen){
 		switch (screen){
 			case MENU:
@@ -49,5 +55,9 @@ public class Box2DTutorial extends Game {
 	public void create() {
 		loadingScreen = new LoadingScreen(this);
 		setScreen(loadingScreen);
+	}
+
+	public AppPreferences getPreferences() {
+		return appPreferences;
 	}
 }
