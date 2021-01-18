@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import de.javadevblog.box2dtutorial.Box2DTutorial;
 
 public class PreferencesScreen implements Screen {
@@ -24,13 +25,18 @@ public class PreferencesScreen implements Screen {
 
     public PreferencesScreen(Box2DTutorial game){
         this.game = game;
+
+        stage = new Stage(new ScreenViewport());
     }
 
     @Override
     public void show() {
+
+        Gdx.input.setInputProcessor(stage);
+
         Table table = new Table();
         table.setFillParent(true);
-        table.setDebug(true);
+        table.setDebug(false);
 
         Skin skin = new Skin(Gdx.files.internal("skin/glassy-ui.json"));
 
@@ -81,30 +87,31 @@ public class PreferencesScreen implements Screen {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 game.changeScreen(Box2DTutorial.MENU);
+                stage.clear();
             }
         });
 
         titleLabel = new Label("Preferences", skin);
-        volumeMusicLabel = new Label(null, skin);
-        volumeSoundLabel = new Label(null, skin);
-        musicOnOffLabel = new Label(null, skin);
-        soundOnOfflabel = new Label(null, skin);
+        volumeMusicLabel = new Label("Music Volume", skin);
+        volumeSoundLabel = new Label("Music", skin);
+        musicOnOffLabel = new Label("SoundVolume", skin);
+        soundOnOfflabel = new Label("Sound Effects", skin);
 
-        table.add(titleLabel);
-        table.row();
-        table.add(volumeMusicLabel);
+        table.add(titleLabel).colspan(2);
+        table.row().pad(10,0,0,10);
+        table.add(volumeMusicLabel).left();
         table.add(volumeMusicSlider);
-        table.row();
-        table.add(musicOnOffLabel);
+        table.row().pad(10,0,0,10);
+        table.add(musicOnOffLabel).left();
         table.add(musicCheckBox);
-        table.row();
-        table.add(volumeSoundLabel);
+        table.row().pad(10,0,0,10);
+        table.add(volumeSoundLabel).left();
         table.add(soundMusicSlider);
-        table.row();
-        table.add(soundOnOfflabel);
+        table.row().pad(10,0,0,10);
+        table.add(soundOnOfflabel).left();
         table.add(soundEffectsCheckbox);
-        table.row();
-        table.add(backButton);
+        table.row().pad(10,0,0,10);
+        table.add(backButton).colspan(2);
 
 
         stage.addActor(table);
