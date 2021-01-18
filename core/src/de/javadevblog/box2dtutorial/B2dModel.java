@@ -15,6 +15,18 @@ public class B2dModel {
         createFloor();
         createObject();
         createMovingObject();
+
+        // get our body factory singleton and store it in bodyFactory
+        BodyFactory bodyFactory = BodyFactory.getInstance(world);
+
+        // add a new rubber ball at position 1, 1
+        bodyFactory.makeCirclePolyBody(1, 1, 2, BodyFactory.RUBBER, BodyDef.BodyType.DynamicBody,false);
+
+        // add a new steel ball at position 4, 1
+        bodyFactory.makeCirclePolyBody(4, 1, 2, BodyFactory.STEEL, BodyDef.BodyType.DynamicBody,false);
+
+        // add a new stone at position -4,1
+        bodyFactory.makeCirclePolyBody(-4, 1, 2, BodyFactory.STONE, BodyDef.BodyType.DynamicBody,false);
     }
 
     public void logicStep(float delta){
