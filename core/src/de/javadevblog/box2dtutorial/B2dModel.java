@@ -11,7 +11,7 @@ public class B2dModel {
     private Body bodyk;
 
     public B2dModel(){
-        world = new World(new Vector2(0, 10f), true);
+        world = new World(new Vector2(0, 0.1f), true);
         createFloor();
         createObject();
         createMovingObject();
@@ -23,10 +23,12 @@ public class B2dModel {
         bodyFactory.makeCirclePolyBody(1, 1, 2, BodyFactory.RUBBER, BodyDef.BodyType.DynamicBody,false);
 
         // add a new steel ball at position 4, 1
-        bodyFactory.makeCirclePolyBody(4, 1, 2, BodyFactory.STEEL, BodyDef.BodyType.DynamicBody,false);
+        //bodyFactory.makeCirclePolyBody(4, 1, 2, BodyFactory.STEEL, BodyDef.BodyType.DynamicBody,false);
 
         // add a new stone at position -4,1
-        bodyFactory.makeCirclePolyBody(-4, 1, 2, BodyFactory.STONE, BodyDef.BodyType.DynamicBody,false);
+        //bodyFactory.makeCirclePolyBody(-4, 1, 2, BodyFactory.STONE, BodyDef.BodyType.DynamicBody,false);
+
+        //bodyFactory.makeCirclePolyBody(1, 1, 2, BodyFactory.RUBBER, BodyDef.BodyType.DynamicBody);
     }
 
     public void logicStep(float delta){
