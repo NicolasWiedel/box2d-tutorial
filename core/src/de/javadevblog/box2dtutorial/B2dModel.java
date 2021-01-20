@@ -11,7 +11,7 @@ public class B2dModel {
     private Body bodyk;
 
     public B2dModel(){
-        world = new World(new Vector2(0, 0.1f), true);
+        world = new World(new Vector2(0, 10f), true);
         createFloor();
         createObject();
         createMovingObject();
